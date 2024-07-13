@@ -1,6 +1,4 @@
-import React from "react";
-
-const DashboardPage = () => {
+const DashboardPage = (): React.ReactNode => {
   return <div>DashboardPage</div>;
 };
 
