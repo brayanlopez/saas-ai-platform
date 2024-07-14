@@ -10,6 +10,7 @@ import {
 
 export type tool = {
   label: string;
+  description: string;
   icon: any;
   href: string;
   color: string;
@@ -19,6 +20,7 @@ export type tool = {
 export const tools: Array<tool> = [
   {
     label: "Conversation",
+    description: "Our most advanced conversation model.",
     icon: MessageSquare,
     href: "/conversation",
     color: "text-violet-500",
@@ -26,6 +28,7 @@ export const tools: Array<tool> = [
   },
   {
     label: "Image Generation",
+    description: "",
     icon: ImageIcon,
     href: "/image",
     color: "text-pink-700",
@@ -33,6 +36,7 @@ export const tools: Array<tool> = [
   },
   {
     label: "Video Generation",
+    description: "",
     icon: VideoIcon,
     href: "/video",
     color: "text-orange-700",
@@ -40,6 +44,7 @@ export const tools: Array<tool> = [
   },
   {
     label: "Music Generation",
+    description: "",
     icon: Music,
     href: "/music",
     color: "text-emerald-500",
@@ -47,6 +52,7 @@ export const tools: Array<tool> = [
   },
   {
     label: "Code Generation",
+    description: "",
     icon: Code,
     href: "/code",
     color: "text-green-700",
@@ -54,7 +60,7 @@ export const tools: Array<tool> = [
   },
 ];
 
-export const sidebarRoutes: Array<tool> = [
+export const sidebarRoutes = [
   {
     label: "Dashboard",
     icon: LayoutDashboard,
