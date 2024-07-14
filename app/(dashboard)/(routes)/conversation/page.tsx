@@ -1,6 +1,10 @@
-import * as z from "zod";
+"use client";
+
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 
 import { tools } from "@/commons/constants";
 import Heading from "@/components/Heading";
@@ -12,6 +16,9 @@ import { Button } from "@/components/ui/button";
 const conversation = tools.filter((tool) => tool.label === "Conversation")[0];
 
 const ConversationPage = () => {
+  const router = useRouter();
+  const [messages, setMessages] = useState([]);
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: { prompt: "" },
@@ -20,7 +27,28 @@ const ConversationPage = () => {
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: FormValues) => {
-    console.log(values);
+    try {
+      // TODO: check logic when call conversation api
+      const response = await axios.post("/api/conversation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      // if (!response.ok) {
+      //   throw new Error("Failed to generate response");
+      // }
+
+      // const data = await response.json();
+      form.reset();
+      // TODO: open pro model
+    } catch (error) {
+      console.error(error);
+    } finally {
+      router.refresh();
+    }
   };
 
   return (
